@@ -58,6 +58,13 @@ const config: Configuration = {
   },
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
+    alias: {
+      "@Assets": path.resolve(__dirname, "./src/assets"),
+      "@App": path.resolve(__dirname, "./src/app"),
+      "@Components": path.resolve(__dirname, "./src/components"),
+      "@Utils": path.resolve(__dirname, "./src/utils"),
+      "@Types": path.resolve(__dirname, "./src/types"),
+    },
   },
   plugins: [
     new HtmlWebpackPlugin({
