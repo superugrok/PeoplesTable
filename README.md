@@ -1,11 +1,5 @@
 # PeoplesTable
 
-## Table of Contents
-
-- [Installation](#installation)
-- [Usage](#usage)
-- [Build](#build)
-
 ## Installation
 
 To get started with this project, follow these steps:
