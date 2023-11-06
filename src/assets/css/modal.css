@@ -1,0 +1,71 @@
+.modal {
+  position: relative;
+  display: none;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+}
+.modal__overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  right: 40%;
+  width: 40vw;
+  padding: 1.5%;
+  border-radius: 15px;
+  backdrop-filter: blur(15px);
+  background-color: rgba(0, 0, 0, 0.2);
+  color: white;
+  text-align: center;
+  animation-name: animate;
+  animation-duration: 0.5s;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+.modal__fullname {
+  margin: 2vh 0 4vh 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.modal__content {
+  display: flex;
+  justify-content: space-between;
+  margin: 1vh 5vh 6vh;
+}
+.modal__info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 2%;
+  background: rgba(0, 0, 0, 0.2);
+}
+.modal__label {
+  font-size: 0.9rem;
+}
+.modal__text {
+  font-size: 1rem;
+  font-weight: bold;
+}
+.modal__content a {
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+.modal__btn {
+  position: absolute;
+  cursor: pointer;
+  top: 15px;
+  right: 15px;
+  width: 30px;
+  height: 30px;
+  border: none;
+  background: transparent;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' x='0px' y='0px' width='100' height='100' viewBox='0,0,256,256'%3E%3Cg fill='%23ffffff' fill-rule='nonzero' stroke='none' stroke-width='1' stroke-linecap='butt' stroke-linejoin='miter' stroke-miterlimit='10' stroke-dasharray='' stroke-dashoffset='0' font-family='none' font-weight='none' font-size='none' text-anchor='none' style='mix-blend-mode: normal'%3E%3Cg transform='scale(8.53333,8.53333)'%3E%3Cpath d='M7,4c-0.25587,0 -0.51203,0.09747 -0.70703,0.29297l-2,2c-0.391,0.391 -0.391,1.02406 0,1.41406l7.29297,7.29297l-7.29297,7.29297c-0.391,0.391 -0.391,1.02406 0,1.41406l2,2c0.391,0.391 1.02406,0.391 1.41406,0l7.29297,-7.29297l7.29297,7.29297c0.39,0.391 1.02406,0.391 1.41406,0l2,-2c0.391,-0.391 0.391,-1.02406 0,-1.41406l-7.29297,-7.29297l7.29297,-7.29297c0.391,-0.39 0.391,-1.02406 0,-1.41406l-2,-2c-0.391,-0.391 -1.02406,-0.391 -1.41406,0l-7.29297,7.29297l-7.29297,-7.29297c-0.1955,-0.1955 -0.45116,-0.29297 -0.70703,-0.29297z'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+}

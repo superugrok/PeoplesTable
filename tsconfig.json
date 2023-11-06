@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "strict": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react",
+    "baseUrl": "src",
+    "paths": {
+      "@Assets/*": ["assets/*"],
+      "@App/*": ["app/*"],
+      "@Components/*": ["components/*"],
+      "@Utils/*": ["utils/*"],
+      "@Types/*": ["types/*"]
+    }
+  },
+  "include": ["src", "./declarations.d.ts"]
+}
