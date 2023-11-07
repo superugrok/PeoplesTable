@@ -12,6 +12,8 @@ export const App: React.FC = () => {
   });
   const [users, setUsers] = React.useState<TUsersState>({ 1: [] });
   const [page, setPage] = React.useState<number>(1);
+  // Preventing fetcing data at didMount twice.
+  const [isFirstLoading, setIsFirstLoading] = React.useState(true);
 
   // App config
   const rowsToDisplay = 10;
@@ -41,8 +43,10 @@ export const App: React.FC = () => {
   }, [page]);
 
   React.useEffect(() => {
-    getUsers(1, true);
-    setPage(1);
+    if (!isFirstLoading) {
+      getUsers(1, true);
+      setPage(1);
+    } else setIsFirstLoading(false);
   }, [filters]);
 
   return (
