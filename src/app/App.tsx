@@ -13,9 +13,18 @@ export const App: React.FC = () => {
   const [users, setUsers] = React.useState<TUsersState>({ 1: [] });
   const [page, setPage] = React.useState<number>(1);
 
+  // App config
+  const rowsToDisplay = 10;
+  const pagesToDisplay = 1000;
+
   const getUsers = async (page: number, filtersChanged?: boolean) => {
     const result = await Axios.get("https://randomuser.me/api/", {
-      params: { results: 10, page, seed: "huskiesarecute", ...filters },
+      params: {
+        results: rowsToDisplay,
+        page,
+        seed: "huskiesarecute",
+        ...filters,
+      },
     });
     filtersChanged
       ? setUsers({ 1: result.data.results })
@@ -44,7 +53,12 @@ export const App: React.FC = () => {
         filters={filters}
         setFilters={setFilters}
       />
-      <Pagination users={users} page={page} setPage={setPage} />
+      <Pagination
+        users={users}
+        page={page}
+        setPage={setPage}
+        pagesCount={pagesToDisplay}
+      />
     </div>
   );
 };

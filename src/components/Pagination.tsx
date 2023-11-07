@@ -3,9 +3,14 @@ import React from "react";
 import { Button } from "./common/Button";
 import "@Assets/css/pagination.css";
 
-export const Pagination = ({ page, setPage, users }: IPaginationProps) => {
+export const Pagination = ({
+  page,
+  setPage,
+  users,
+  pagesCount,
+}: IPaginationProps) => {
   const dynamicBtns = [];
-  const checkBorders = (i: number) => i > 1 && i < 1000;
+  const checkBorders = (i: number) => i > 1 && i < pagesCount;
   for (let i = page - 2; i < page + 3; i++) {
     checkBorders(i) &&
       dynamicBtns.push(
@@ -15,7 +20,7 @@ export const Pagination = ({ page, setPage, users }: IPaginationProps) => {
       );
   }
   const backDotsDisplay = page > 4 ? "inline-block" : "none";
-  const forwardDotsDisplay = page < 997 ? "inline-block" : "none";
+  const forwardDotsDisplay = page < pagesCount - 3 ? "inline-block" : "none";
 
   return (
     users[page] && (
@@ -26,8 +31,11 @@ export const Pagination = ({ page, setPage, users }: IPaginationProps) => {
         <Button style={{ display: backDotsDisplay }}>...</Button>
         {dynamicBtns}
         <Button style={{ display: forwardDotsDisplay }}>...</Button>
-        <Button disabled={page === 1000} onClick={() => setPage(1000)}>
-          1000
+        <Button
+          disabled={page === pagesCount}
+          onClick={() => setPage(pagesCount)}
+        >
+          {pagesCount}
         </Button>
       </div>
     )

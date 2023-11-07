@@ -12,6 +12,7 @@ export interface ITableProps extends ICommonProps {
 
 export interface IPaginationProps extends ICommonProps {
   setPage: React.Dispatch<React.SetStateAction<number>>;
+  pagesCount: number;
 }
 
 export interface IFiltersProps {
