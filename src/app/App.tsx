@@ -4,6 +4,7 @@ import { Table } from "@Components/Table";
 import { Pagination } from "@Components/Pagination";
 import { IFiltersState, TUsersState } from "@Types/states";
 import Axios from "axios";
+import { usePrev } from "@Hooks/usePrev";
 
 export const App: React.FC = () => {
   const [filters, setFilters] = React.useState<IFiltersState>({
@@ -13,11 +14,16 @@ export const App: React.FC = () => {
   const [users, setUsers] = React.useState<TUsersState>({ 1: [] });
   const [page, setPage] = React.useState<number>(1);
   // Preventing fetcing data at didMount twice.
-  const [isFirstLoading, setIsFirstLoading] = React.useState(true);
+  const prevFilters = usePrev(filters, true);
 
   // App config
   const rowsToDisplay = 10;
   const pagesToDisplay = 1000;
+
+  const handleFiltersChange = () => {
+    getUsers(1, true);
+    setPage(1);
+  };
 
   const getUsers = async (page: number, filtersChanged?: boolean) => {
     const result = await Axios.get("https://randomuser.me/api/", {
@@ -39,14 +45,11 @@ export const App: React.FC = () => {
 
   React.useEffect(() => {
     !users[page] && getUsers(page);
-    !users[page] && console.log("Getting pages");
   }, [page]);
 
   React.useEffect(() => {
-    if (!isFirstLoading) {
-      getUsers(1, true);
-      setPage(1);
-    } else setIsFirstLoading(false);
+    JSON.stringify(prevFilters) != JSON.stringify(filters) &&
+      handleFiltersChange();
   }, [filters]);
 
   return (

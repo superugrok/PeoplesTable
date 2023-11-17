@@ -15,6 +15,7 @@
     "paths": {
       "@Assets/*": ["assets/*"],
       "@App/*": ["app/*"],
+      "@Hooks/*": ["app/hooks/*"],
       "@Components/*": ["components/*"],
       "@Utils/*": ["utils/*"],
       "@Types/*": ["types/*"]
