@@ -1,4 +1,5 @@
 import React from "react";
+import ReactDOM from "react-dom";
 import { IModalProps } from "@Types/common";
 
 export const Modal = ({ visible, setVisible, content }: IModalProps) => {
@@ -7,9 +8,13 @@ export const Modal = ({ visible, setVisible, content }: IModalProps) => {
       setVisible({ visible: false, modalContnet: <div></div> });
   };
 
-  return (
+  const root: any = document.getElementById("root");
+
+  const modal = (
     <div className="modal" style={{ display: visible ? "block" : "none" }}>
       <div className="modal__overlay">{content}</div>
     </div>
   );
+
+  return ReactDOM.createPortal(modal, root);
 };
